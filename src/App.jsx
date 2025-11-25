@@ -2540,6 +2540,7 @@ const LearningStreak = ({ streak = 0, streakHistory = [] }) => {
         </div>
         <Calendar className="text-slate-500" size={16} />
       </div>
+      
       <div className="flex justify-between">
         {days.map((day, i) => {
           const isActive = isDayActive(i);
