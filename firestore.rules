@@ -1,0 +1,59 @@
+rules_version = '2';
+
+// IMPORTANT: Copy these rules to your Firebase Console
+// Go to: https://console.firebase.google.com/project/flutterkit-a8bc8/firestore/rules
+// Then paste these rules and click "Publish"
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Newsletter collection - allow anyone to subscribe
+    match /newsletter/{document} {
+      // Anyone can add their email (create)
+      allow create: if request.resource.data.email is string 
+                    && request.resource.data.email.size() > 0
+                    && request.resource.data.email.size() < 256;
+      // Anyone can read to check if email exists
+      allow read: if true;
+      // No updates or deletes from client
+      allow update, delete: if false;
+    }
+    
+    // Feedback collection - allow anyone to submit feedback
+    match /feedback/{document} {
+      // Anyone can submit feedback
+      allow create: if request.resource.data.message is string
+                    && request.resource.data.message.size() > 0
+                    && request.resource.data.message.size() < 5000;
+      // No read, update, or delete from client
+      allow read, update, delete: if false;
+    }
+    
+    // Community stats - read only for clients
+    match /stats/{document} {
+      allow read: if true;
+      // Only allow increment updates for specific fields
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+                      .hasOnly(['totalLearners', 'modulesCompleted', 'hoursLearned']);
+      allow create: if true; // Allow initial creation
+      allow delete: if false;
+    }
+    
+    // Shared progress - allow create and read
+    match /sharedProgress/{document} {
+      allow create: if request.resource.data.percentComplete is number;
+      allow read: if true;
+      // Allow updating view count only
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views']);
+      allow delete: if false;
+    }
+    
+    // Leaderboard - allow create and read
+    match /leaderboard/{document} {
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.score is number;
+      allow read: if true;
+      allow update, delete: if false;
+    }
+  }
+}
