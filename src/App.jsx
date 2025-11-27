@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import AppLogo from './assets/Applogo.png';
 import { 
   Terminal, BookOpen, Code, Layers, 
   CheckCircle2, ChevronDown, 
@@ -2358,7 +2359,7 @@ const Header = ({ stats, resetData, onOpenResources }) => (
       {/* Brand */}
       <div className="flex items-center gap-2 sm:gap-3">
         <img 
-          src="/src/assets/Applogo.png" 
+          src={AppLogo} 
           alt="FlutterOrbit Logo" 
           className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl shadow-lg shadow-blue-500/25"
         />
@@ -3297,7 +3298,7 @@ const CertificateModal = ({ moduleId, moduleName, onClose, userProgress, setUser
                           fontFamily: "'Georgia', serif",
                         }}>
                           <img 
-                            src="/src/assets/Applogo.png" 
+                            src={AppLogo} 
                             alt="FlutterOrbit Logo"
                             style={{
                               width: '50px',
@@ -4156,7 +4157,7 @@ const ShareProgressModal = ({ onClose, userProgress, stats }) => {
           <div className="bg-gradient-to-br from-blue-500/10 to-violet-500/10 rounded-xl p-5 border border-blue-500/20">
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="/src/assets/Applogo.png" 
+                src={AppLogo} 
                 alt="FlutterOrbit Logo" 
                 className="w-10 h-10 rounded-xl"
               />
@@ -5283,7 +5284,7 @@ const Footer = () => {
           <div className="space-y-5 max-w-sm">
             <div className="flex items-center gap-2.5">
               <img 
-                src="/src/assets/Applogo.png" 
+                src={AppLogo} 
                 alt="FlutterOrbit Logo" 
                 className="w-10 h-10 rounded-xl shadow-lg shadow-blue-500/20"
               />
