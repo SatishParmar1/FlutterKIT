@@ -4049,6 +4049,14 @@ const CommunityStatsCard = ({ communityStats, onOpenFeedback }) => {
     { label: 'Avg. Streak', value: `${communityStats.averageStreak || 7} days`, icon: Flame, color: 'from-orange-500 to-red-500' },
   ];
 
+  const handleFeedbackClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onOpenFeedback) {
+      onOpenFeedback();
+    }
+  };
+
   return (
     <div className="glass rounded-2xl border border-slate-700/50 p-5 sm:p-6 mb-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
@@ -4062,8 +4070,9 @@ const CommunityStatsCard = ({ communityStats, onOpenFeedback }) => {
           </div>
         </div>
         <button
-          onClick={onOpenFeedback}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400 hover:bg-violet-500/20 transition-all text-sm font-medium"
+          type="button"
+          onClick={handleFeedbackClick}
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400 hover:bg-violet-500/20 active:bg-violet-500/30 transition-all text-sm font-medium cursor-pointer select-none"
         >
           <MessageSquare size={16} />
           <span>Send Feedback</span>
@@ -5643,7 +5652,7 @@ export default function App() {
         {/* Community Stats */}
         <CommunityStatsCard 
           communityStats={communityStats} 
-          onOpenFeedback={() => setShowFeedback(true)} 
+          onOpenFeedback={useCallback(() => setShowFeedback(true), [])} 
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
