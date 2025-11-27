@@ -169,55 +169,6 @@ service cloud.firestore {
 }
 ```
 
-### 3. Update Firebase Config
-Edit `src/firebase.js` with your credentials:
-```javascript
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  // ... rest of config
-};
-```
-
----
-
-## 📁 Project Structure
-
-```
-FlutterKIT/
-├── public/
-│   └── Applogo.png          # App logo/favicon
-├── src/
-│   ├── assets/
-│   │   └── Applogo.png      # Logo asset
-│   ├── App.jsx              # Main application
-│   ├── App.css              # Custom styles
-│   ├── firebase.js          # Firebase configuration
-│   ├── index.css            # Tailwind imports
-│   └── main.jsx             # Entry point
-├── index.html               # HTML template
-├── package.json             # Dependencies
-├── vite.config.js           # Vite configuration
-├── tailwind.config.js       # Tailwind configuration
-└── firestore.rules          # Firebase security rules
-```
-
----
-
-## 🎨 Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| **React 19** | UI Framework |
-| **Vite 7** | Build Tool & Dev Server |
-| **Tailwind CSS 4** | Styling |
-| **Lucide React** | Icons |
-| **Firebase** | Backend Services |
-| **html2canvas** | Certificate Generation |
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
